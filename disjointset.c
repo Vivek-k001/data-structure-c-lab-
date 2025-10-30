@@ -4,14 +4,12 @@
 
 int parent[MAX];
 
-// Function to initialize each element as its own parent
 void initialize(int n) {
     for (int i = 1; i <= n; i++) {
         parent[i] = i;
     }
 }
 
-// Function to find the parent (representative) of an element
 int find(int x) {
     if (parent[x] == x)
         return x;
@@ -19,7 +17,6 @@ int find(int x) {
         return find(parent[x]);
 }
 
-// Function to perform union of two sets
 void unionSet(int x, int y) {
     int parentX = find(x);
     int parentY = find(y);
@@ -27,12 +24,11 @@ void unionSet(int x, int y) {
     if (parentX == parentY) {
         printf("Elements %d and %d are already in the same set.\n", x, y);
     } else {
-        parent[parentY] = parentX;  // make one parent as root of the other
+        parent[parentY] = parentX;
         printf("Union done between %d and %d.\n", x, y);
     }
 }
 
-// Function to display current parent array
 void display(int n) {
     printf("\nElement : Parent\n");
     for (int i = 1; i <= n; i++) {
@@ -58,8 +54,8 @@ int main() {
         scanf("%d", &choice);
 
         switch (choice) {
-                printf("Enter element: ");
             case 1:
+                printf("Enter element: ");
                 scanf("%d", &a);
                 printf("Parent of %d is %d\n", a, find(a));
                 break;
@@ -85,3 +81,4 @@ int main() {
 
     return 0;
 }
+
